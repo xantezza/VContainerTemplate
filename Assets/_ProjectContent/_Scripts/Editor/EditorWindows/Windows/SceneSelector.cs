@@ -4,7 +4,7 @@ using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Editor.EditorWindows.Windows
+namespace VContainerTemplateEditor.Editor.EditorWindows.Windows
 {
     public class SceneSelector : EditorWindow
     {

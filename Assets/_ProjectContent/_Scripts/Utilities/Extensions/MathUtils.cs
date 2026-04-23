@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Utilities.Extensions
+namespace VContainerTemplate.Utilities.Extensions
 {
     public static class MathUtils
     {

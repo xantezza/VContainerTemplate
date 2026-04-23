@@ -2,7 +2,7 @@
 using System.Runtime.Serialization.Formatters.Binary;
 using Newtonsoft.Json;
 
-namespace Utilities.Extensions
+namespace VContainerTemplate.Utilities.Extensions
 {
     public static class SerializeExtensions
     {

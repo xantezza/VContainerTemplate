@@ -2,8 +2,6 @@
 using System.Diagnostics;
 using System.IO;
 using System.IO.Compression;
-using Editor.Utils;
-using Editor.Utils.Static;
 using UnityEditor;
 using UnityEditor.AddressableAssets;
 using UnityEditor.AddressableAssets.Settings;
@@ -11,13 +9,15 @@ using UnityEditor.Build.Reporting;
 using UnityEditor.Compilation;
 using UnityEditor.WebGL;
 using UnityEngine;
+using VContainerTemplateEditor.Editor.Utils;
+using VContainerTemplateEditor.Editor.Utils.Static;
 using Debug = UnityEngine.Debug;
 
-namespace Editor.Build
+namespace VContainerTemplateEditor.Editor.Build
 {
     public class BuildCommand
     {
-        private const int PORT = 50000;
+        private const int Port = 50000;
 #if DEV
         [MenuItem("Build/DEV_Windows/Confirm")]
         public static void BuildWindows()
@@ -38,6 +38,7 @@ namespace Editor.Build
         }
 
         [MenuItem("DEV/To Production/Confirm")]
+        [Obsolete("Obsolete")]
         public static void DEVToProd()
         {
             var currentGroup = BuildPipeline.GetBuildTargetGroup(EditorUserBuildSettings.activeBuildTarget);
@@ -70,6 +71,12 @@ namespace Editor.Build
         
         private static void BuildGame(BuildTarget target, string platformFolderName, bool isDev, bool autoRun = false)
         {
+#if DEV
+            EditorAddressablesUtils.SetIncludeGroupInBuild("Debug", true);    
+#else
+            EditorAddressablesUtils.SetIncludeGroupInBuild("Debug", false);    
+#endif  
+            
             if (EditorUserBuildSettings.activeBuildTarget != target)
             {
                 EditorUserBuildSettings.SwitchActiveBuildTarget(BuildPipeline.GetBuildTargetGroup(target), target);
@@ -154,10 +161,10 @@ namespace Editor.Build
                     {
                         if (autoRun)
                         {
-                            PythonServerLauncher.StartPythonHttpServer(buildFolderPath, PORT);
+                            PythonServerLauncher.StartPythonHttpServer(buildFolderPath, Port);
                             Process.Start(new ProcessStartInfo
                             {
-                                FileName = $"http://localhost:{PORT}/index.html",
+                                FileName = $"http://localhost:{Port}/index.html",
                                 UseShellExecute = true
                             });
                         }

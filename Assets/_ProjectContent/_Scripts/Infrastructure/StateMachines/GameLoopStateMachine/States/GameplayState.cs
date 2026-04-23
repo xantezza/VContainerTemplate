@@ -1,15 +1,12 @@
-﻿using System.Collections.Generic;
-using Cysharp.Threading.Tasks;
-using Infrastructure.Providers.AssetReferenceProvider;
-using Infrastructure.Services.Analytics;
-using Infrastructure.Services.LoadingCurtain;
-using Infrastructure.Services.Saving;
-using Infrastructure.Services.SceneLoading;
+﻿using Cysharp.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.Analytics;
-using Zenject;
+using VContainer;
+using VContainerTemplate.Infrastructure.Providers.AssetReferenceProvider;
+using VContainerTemplate.Infrastructure.Services.Analytics;
+using VContainerTemplate.Infrastructure.Services.Saving;
+using VContainerTemplate.Infrastructure.Services.SceneLoading;
 
-namespace Infrastructure.StateMachines.GameLoopStateMachine.States
+namespace VContainerTemplate.Infrastructure.StateMachines.GameLoopStateMachine.States
 {
     public class GameplayState : BaseGameLoopState, IEnterableState
     {

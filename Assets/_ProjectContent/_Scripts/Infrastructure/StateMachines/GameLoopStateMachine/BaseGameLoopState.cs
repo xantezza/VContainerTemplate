@@ -1,7 +1,7 @@
 ﻿using Cysharp.Threading.Tasks;
-using Zenject;
+using VContainer;
 
-namespace Infrastructure.StateMachines.GameLoopStateMachine
+namespace VContainerTemplate.Infrastructure.StateMachines.GameLoopStateMachine
 {
     public abstract class BaseGameLoopState : IState
     {

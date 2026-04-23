@@ -13,12 +13,15 @@ MonoBehaviour:
   m_Name: Debug
   m_EditorClassIdentifier: 
   m_GroupName: Debug
-  m_Data:
-    m_SerializedData: []
   m_GUID: 7fd37f47870d06646a51e4b97894814c
   m_SerializeEntries:
   - m_GUID: 52d0d1ae7ef98434caef0186654f7b2c
     m_Address: Debug
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d829dcfc225f56440a2b10d9ac318aea
+    m_Address: Assets/Plugins/IngameDebugConsole/Sprites/IngameDebugConsoleSpriteAtlas.spriteatlas
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

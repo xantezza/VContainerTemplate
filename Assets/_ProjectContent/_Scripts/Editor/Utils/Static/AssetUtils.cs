@@ -2,7 +2,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace Editor.Utils.Static
+namespace VContainerTemplateEditor.Editor.Utils.Static
 {
     public static class AssetUtils
     {

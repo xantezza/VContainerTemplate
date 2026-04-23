@@ -1,14 +1,16 @@
 ﻿using Cysharp.Threading.Tasks;
-using Infrastructure.Services.Saving;
 using JetBrains.Annotations;
+using VContainer;
+using VContainerTemplate.Infrastructure.Services.Saving;
 
-namespace Infrastructure.StateMachines.InitializationStateMachine.States
+namespace VContainerTemplate.Infrastructure.StateMachines.InitializationStateMachine.States
 {
     [UsedImplicitly]
     public class InitializeSaveServiceState : BaseInitializationState, IEnterableState
     {
         private readonly ISaveService _saveService;
 
+        [Inject]
         public InitializeSaveServiceState(InitializationStateMachine gameLoopStateMachine, ISaveService saveService) : base(gameLoopStateMachine)
         {
             _saveService = saveService;

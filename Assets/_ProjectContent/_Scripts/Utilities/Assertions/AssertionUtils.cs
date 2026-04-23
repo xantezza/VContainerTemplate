@@ -1,6 +1,6 @@
-﻿using Infrastructure.Services.Log;
+﻿using VContainerTemplate.Infrastructure.Services.Log;
 
-namespace Utilities.Assertions
+namespace VContainerTemplate.Utilities.Assertions
 {
     public static class AssertionUtils
     {
@@ -8,7 +8,7 @@ namespace Utilities.Assertions
         {
             if (obj == null)
             {
-                Logger.Error($"Object of type {nameof(T)} is null");
+                Log.Error($"Object of type {typeof(T)} is null");
             }
             return obj;
         }

@@ -1,12 +1,11 @@
 ﻿using System;
-using Configs;
-using Configs.RemoteConfig;
-using Configs.RemoteConfig.Configs;
 using Newtonsoft.Json;
 using TriInspector;
 using UnityEngine;
+using VContainerTemplate.Configs.RemoteConfig;
+using VContainerTemplate.Configs.RemoteConfig.Configs;
 
-namespace Editor.Utils
+namespace VContainerTemplateEditor.Editor.Utils
 {
     public class ConfigUtility : ScriptableObject
     {

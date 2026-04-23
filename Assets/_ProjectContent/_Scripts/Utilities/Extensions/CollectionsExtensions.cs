@@ -4,7 +4,7 @@ using System.Linq;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace Utilities.Extensions
+namespace VContainerTemplate.Utilities.Extensions
 {
     public static class CollectionsExtensions
     {

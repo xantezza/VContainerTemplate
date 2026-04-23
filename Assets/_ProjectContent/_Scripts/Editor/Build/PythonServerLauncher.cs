@@ -1,8 +1,7 @@
 ﻿using System;
-using UnityEngine;
 using System.Diagnostics;
 
-namespace Editor.Build
+namespace VContainerTemplateEditor.Editor.Build
 {
     public class PythonServerLauncher
     {

@@ -1,17 +1,10 @@
 ﻿using UnityEditor;
 using UnityEngine;
-using Zenject;
 
-namespace Editor.Utils.Static
+namespace VContainerTemplateEditor.Editor.Utils.Static
 {
     public static class MenuItems
     {
-        [MenuItem("Assets/Project/Select Project Context", false, 6)]
-        private static void SelectProjectContext()
-        {
-            Selection.activeObject = Resources.Load<ProjectContext>("ProjectContext");
-        }
-
         [MenuItem("Assets/Project/Select Config Utility", false, 8)]
         private static void SelectConfigUtility()
         {

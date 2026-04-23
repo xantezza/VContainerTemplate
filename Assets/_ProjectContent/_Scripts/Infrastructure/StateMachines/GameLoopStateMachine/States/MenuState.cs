@@ -1,9 +1,9 @@
 ﻿using Cysharp.Threading.Tasks;
-using Infrastructure.Providers.AssetReferenceProvider;
-using Infrastructure.Services.SceneLoading;
-using Zenject;
+using VContainer;
+using VContainerTemplate.Infrastructure.Providers.AssetReferenceProvider;
+using VContainerTemplate.Infrastructure.Services.SceneLoading;
 
-namespace Infrastructure.StateMachines.GameLoopStateMachine.States
+namespace VContainerTemplate.Infrastructure.StateMachines.GameLoopStateMachine.States
 {
     public class MenuState : BaseGameLoopState, IEnterableState
     {

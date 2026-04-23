@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Utilities.MonoBehaviours
+namespace VContainerTemplate.Utilities.MonoBehaviours
 {
     public class ChildLayerSetter : MonoBehaviour
     {

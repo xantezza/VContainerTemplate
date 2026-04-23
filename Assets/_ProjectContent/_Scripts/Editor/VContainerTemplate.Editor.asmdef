@@ -1,0 +1,24 @@
+{
+    "name": "VContainerTemplate.Editor",
+    "rootNamespace": "VContainerTemplateEditor",
+    "references": [
+        "TriInspector",
+        "TriInspector.Editor",
+        "UniTask",
+        "Unity.Addressables.Editor",
+        "Unity.Core.Editor",
+        "Unity.Addressables",
+        "VContainerTemplate"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -1,7 +1,7 @@
 ﻿using System;
 using Newtonsoft.Json;
 
-namespace Configs.RemoteConfig.Configs
+namespace VContainerTemplate.Configs.RemoteConfig.Configs
 {
     [Serializable]
     public class InfrastructureConfig : IConfig

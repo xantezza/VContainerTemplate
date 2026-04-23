@@ -1,4 +1,4 @@
-﻿namespace Configs.RemoteConfig
+﻿namespace VContainerTemplate.Configs.RemoteConfig
 {
     /// <summary>
     ///     Config marker for serialization purposes

@@ -1,11 +1,10 @@
-﻿using Configs;
-using Configs.RemoteConfig;
-using Cysharp.Threading.Tasks;
-using Infrastructure.Providers.DefaultConfigProvider;
-using Infrastructure.Services.Log;
-using Zenject;
+﻿using Cysharp.Threading.Tasks;
+using VContainer;
+using VContainer.Unity;
+using VContainerTemplate.Configs.RemoteConfig;
+using VContainerTemplate.Infrastructure.Providers.DefaultConfigProvider;
 
-namespace Infrastructure.StateMachines.InitializationStateMachine.States
+namespace VContainerTemplate.Infrastructure.StateMachines.InitializationStateMachine.States
 {
     public class InitializeDefaultConfigState : BaseInitializationState, IEnterableState
     {

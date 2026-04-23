@@ -1,10 +1,9 @@
-﻿using Infrastructure.Factories;
-using Infrastructure.Factories.StateMachines;
-using Infrastructure.Services.Log;
-using Infrastructure.StateMachines.InitializationStateMachine.States;
-using JetBrains.Annotations;
+﻿using JetBrains.Annotations;
+using VContainerTemplate.Infrastructure.Services.Log;
+using VContainerTemplate.Infrastructure.StateMachines.Factory;
+using VContainerTemplate.Infrastructure.StateMachines.InitializationStateMachine.States;
 
-namespace Infrastructure.StateMachines.InitializationStateMachine
+namespace VContainerTemplate.Infrastructure.StateMachines.InitializationStateMachine
 {
     [UsedImplicitly]
     public class InitializationStateMachine : SequentialStateMachine

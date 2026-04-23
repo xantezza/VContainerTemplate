@@ -1,6 +1,12 @@
-﻿namespace Utilities.Extensions
+﻿using System;
+using DG.Tweening;
+using DG.Tweening.Core;
+using DG.Tweening.Plugins.Options;
+using TMPro;
+using UnityEngine;
+
+namespace VContainerTemplate.Utilities.Extensions
 {
-    /* DOTween is obsolete
     public static class DOTweenExtensions
     {
         public static TweenerCore<Vector2, Vector2, VectorOptions> DOSize(this SpriteRenderer target, Vector2 endValue, float duration)
@@ -32,5 +38,4 @@
             return tween;
         }
     }
-    */
 }

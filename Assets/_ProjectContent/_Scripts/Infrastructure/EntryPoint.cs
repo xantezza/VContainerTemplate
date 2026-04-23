@@ -1,27 +1,29 @@
-using Infrastructure.Factories;
-using Infrastructure.Factories.StateMachines.GameLoop;
-using Infrastructure.StateMachines.GameLoopStateMachine.States;
+using System;
 using UnityEngine;
-using Zenject;
+using VContainer;
+using VContainerTemplate.Infrastructure.Services.Log;
+using VContainerTemplate.Infrastructure.StateMachines.GameLoopStateMachine.Factory;
+using VContainerTemplate.Infrastructure.StateMachines.GameLoopStateMachine.States;
 
-namespace Infrastructure
+namespace VContainerTemplate.Infrastructure
 {
     public class EntryPoint : MonoBehaviour
     {
-        private IGameLoopStateMachineFactory _stateMachineFactory;
+        [Inject] private IGameLoopStateMachineFactory _stateMachineFactory;
 
         public static bool HasStarted { get; private set; }
-
-        [Inject]
-        private void Inject(IGameLoopStateMachineFactory stateMachineFactory)
+        
+        public async void Start()
         {
-            _stateMachineFactory = stateMachineFactory;
-        }
-
-        private async void Start()
-        {
-            HasStarted = true;
-            await _stateMachineFactory.GetFrom(this).Enter<EntryPointState>();
+            try
+            {
+                HasStarted = true;
+                await _stateMachineFactory.GetFrom(this).Enter<EntryPointState>();
+            }
+            catch (Exception e)
+            {
+                Log.Error(e.Message);
+            }
         }
     }
 }

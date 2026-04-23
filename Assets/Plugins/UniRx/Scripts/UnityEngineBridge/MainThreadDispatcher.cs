@@ -489,7 +489,7 @@ namespace UniRx
 
                 try
                 {
-                    dispatcher = FindObjectOfType<MainThreadDispatcher>();
+                    dispatcher = FindFirstObjectByType<MainThreadDispatcher>();
                 }
                 catch
                 {
@@ -611,7 +611,7 @@ namespace UniRx
 
         public static void CullAllExcessDispatchers()
         {
-            var dispatchers = FindObjectsOfType<MainThreadDispatcher>();
+            var dispatchers = FindObjectsByType<MainThreadDispatcher>(FindObjectsSortMode.None);
             for (var i = 0; i < dispatchers.Length; i++)
             {
                 DestroyDispatcher(dispatchers[i]);
@@ -622,7 +622,7 @@ namespace UniRx
         {
             if (instance == this)
             {
-                instance = FindObjectOfType<MainThreadDispatcher>();
+                instance = FindFirstObjectByType<MainThreadDispatcher>();
                 initialized = instance != null;
 
                 /*

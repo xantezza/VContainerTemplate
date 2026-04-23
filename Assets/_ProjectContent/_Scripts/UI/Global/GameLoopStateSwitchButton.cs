@@ -1,13 +1,10 @@
-﻿using Infrastructure.Factories;
-using Infrastructure.Factories.StateMachines.GameLoop;
-using Infrastructure.Providers.AssetReferenceProvider;
-using Infrastructure.Services.SceneLoading;
-using Infrastructure.StateMachines.GameLoopStateMachine;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
-using Zenject;
+using VContainer;
+using VContainerTemplate.Infrastructure.StateMachines.GameLoopStateMachine;
+using VContainerTemplate.Infrastructure.StateMachines.GameLoopStateMachine.Factory;
 
-namespace UI.Global
+namespace VContainerTemplate.UI.Global
 {
     [RequireComponent(typeof(Button))]
     public class GameLoopStateSwitchButton : MonoBehaviour

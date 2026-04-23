@@ -1,6 +1,6 @@
 ﻿using Cysharp.Threading.Tasks;
 
-namespace Infrastructure.StateMachines
+namespace VContainerTemplate.Infrastructure.StateMachines
 {
     public interface IPayloadedState<in TPayload>
     {

@@ -1,9 +1,9 @@
 ﻿using Cysharp.Threading.Tasks;
-using Infrastructure.Providers.AssetReferenceProvider;
 using UnityEngine;
-using Zenject;
+using VContainer;
+using VContainerTemplate.Infrastructure.Providers.AssetReferenceProvider;
 
-namespace Infrastructure.StateMachines.InitializationStateMachine.States
+namespace VContainerTemplate.Infrastructure.StateMachines.InitializationStateMachine.States
 {
     public class InitializeDebugToolsState : BaseInitializationState, IEnterableState
     {

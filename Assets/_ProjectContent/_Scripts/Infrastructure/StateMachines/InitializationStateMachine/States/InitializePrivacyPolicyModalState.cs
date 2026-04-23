@@ -1,18 +1,16 @@
 ﻿using System;
 using Cysharp.Threading.Tasks;
-using Infrastructure.Factories;
-using Infrastructure.Factories.ModalPopup;
-using Infrastructure.Services.Log;
-using Infrastructure.Services.Modals;
-using Infrastructure.Services.Saving;
 using JetBrains.Annotations;
 using UniRx;
-using Unity.Services.Analytics;
+using UnityEngine.UnityConsent;
+using VContainer;
+using VContainerTemplate.Infrastructure.Services.Saving;
+using VContainerTemplate.UI.ModalPopups;
 
-namespace Infrastructure.StateMachines.InitializationStateMachine.States
+namespace VContainerTemplate.Infrastructure.StateMachines.InitializationStateMachine.States
 {
     [UsedImplicitly]
-    public class InitializePrivacyPolicyModalState : BaseInitializationState, IDataSaveable<InitializePrivacyPolicyModalState.Save>, IEnterableState
+    public class InitializePrivacyPolicyModalState : BaseInitializationState, IDataSaveable<InitializePrivacyPolicyModalState.Save>, IEnterableState, IDisposable
     {
         private const bool DEV_CONSENT = false;
 
@@ -27,8 +25,10 @@ namespace Infrastructure.StateMachines.InitializationStateMachine.States
 
         private readonly ISaveService _saveService;
         private readonly IModalPopupFactory _modalPopupFactory;
+        private IDisposable _subscription;
 
-        protected InitializePrivacyPolicyModalState(InitializationStateMachine stateMachine, IModalPopupFactory modalPopupFactory, ISaveService saveService) : base(stateMachine)
+        [Inject]
+        public InitializePrivacyPolicyModalState(InitializationStateMachine stateMachine, IModalPopupFactory modalPopupFactory, ISaveService saveService) : base(stateMachine)
         {
             _modalPopupFactory = modalPopupFactory;
             _saveService = saveService;
@@ -44,21 +44,25 @@ namespace Infrastructure.StateMachines.InitializationStateMachine.States
 #endif
             if (SaveData.ConsentGiven)
             {
-                if (InitializeUnityServicesState.IsInitialized) AnalyticsService.Instance.StartDataCollection();
+                if (InitializeUnityServicesState.IsInitialized) EndUserConsent.SetConsentState(new ConsentState(){AnalyticsIntent = ConsentStatus.Granted});
                 await _stateMachine.NextState();
             }
             else
             {
-                var popup = await _modalPopupFactory.Show<PrivacyPolicyModal>();
-                popup.OnInteract.Subscribe(_ => OnInteract());
+                _subscription = (await _modalPopupFactory.Show<PrivacyPolicyModal>()).OnInteract.Subscribe(_ => OnInteract());
             }
         }
 
         private async void OnInteract()
         {
             SaveData.ConsentGiven = true;
-            if (InitializeUnityServicesState.IsInitialized) AnalyticsService.Instance.StartDataCollection();
+            if (InitializeUnityServicesState.IsInitialized) EndUserConsent.SetConsentState(new ConsentState(){AnalyticsIntent = ConsentStatus.Granted});
             await _stateMachine.NextState();
+        }
+
+        public void Dispose()
+        {
+            _subscription.Dispose();
         }
     }
 }

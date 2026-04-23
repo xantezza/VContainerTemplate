@@ -1,6 +1,6 @@
 ﻿using TMPro;
 
-namespace Utilities.Extensions
+namespace VContainerTemplate.Utilities.Extensions
 {
     public static class TextMeshProExtensions
     {

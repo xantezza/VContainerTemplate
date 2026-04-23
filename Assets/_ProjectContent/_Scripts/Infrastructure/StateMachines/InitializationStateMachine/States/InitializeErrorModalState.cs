@@ -1,19 +1,19 @@
 ﻿using System;
 using Cysharp.Threading.Tasks;
-using Infrastructure.Factories;
-using Infrastructure.Factories.ModalPopup;
-using Infrastructure.Services.Modals;
 using JetBrains.Annotations;
 using UnityEngine;
+using VContainer;
+using VContainerTemplate.UI.ModalPopups;
 
-namespace Infrastructure.StateMachines.InitializationStateMachine.States
+namespace VContainerTemplate.Infrastructure.StateMachines.InitializationStateMachine.States
 {
     [UsedImplicitly]
     public class InitializeErrorModalState : BaseInitializationState, IEnterableState, IDisposable
     {
         private readonly IModalPopupFactory _modalPopupFactory;
 
-        protected InitializeErrorModalState(InitializationStateMachine stateMachine, IModalPopupFactory modalPopupFactory) : base(stateMachine)
+        [Inject]
+        public InitializeErrorModalState(InitializationStateMachine stateMachine, IModalPopupFactory modalPopupFactory) : base(stateMachine)
         {
             _modalPopupFactory = modalPopupFactory;
         }
@@ -30,7 +30,7 @@ namespace Infrastructure.StateMachines.InitializationStateMachine.States
             {
                 var popup = await _modalPopupFactory.Spawn<ErrorModal>();
                 popup.Init(condition, stacktrace);
-                await popup.Show();
+                popup.Show();
             }
         }
 

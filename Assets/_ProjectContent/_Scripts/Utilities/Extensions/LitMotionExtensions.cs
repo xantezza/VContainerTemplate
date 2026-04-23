@@ -1,9 +1,10 @@
-﻿using Cysharp.Threading.Tasks;
+﻿/*
+using Cysharp.Threading.Tasks;
 using LitMotion;
 using LitMotion.Extensions;
 using UnityEngine;
 
-namespace Utilities.Extensions
+namespace VContainerTemplate.Utilities.Extensions
 {
     public static class LitMotionExtensions
     {
@@ -21,3 +22,4 @@ namespace Utilities.Extensions
         }
     }
 }
+*/

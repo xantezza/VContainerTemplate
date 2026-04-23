@@ -2,7 +2,7 @@
 using System.Globalization;
 using System.Text;
 
-namespace Utilities.Extensions
+namespace VContainerTemplate.Utilities.Extensions
 {
     public enum ConvertFormat
     {

@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 
-namespace Utilities.Extensions
+namespace VContainerTemplate.Utilities.Extensions
 {
     public static class ReflectionUtils
     {

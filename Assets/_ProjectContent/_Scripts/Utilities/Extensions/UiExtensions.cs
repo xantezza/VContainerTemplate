@@ -1,6 +1,6 @@
 ﻿using UnityEngine.UI;
 
-namespace Utilities.Extensions
+namespace VContainerTemplate.Utilities.Extensions
 {
     public static class UiExtensions
     {

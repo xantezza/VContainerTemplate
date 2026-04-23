@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
-using Infrastructure.Services.Log;
+using VContainerTemplate.Infrastructure.Services.Log;
 
-namespace Infrastructure.StateMachines
+namespace VContainerTemplate.Infrastructure.StateMachines
 {
     public abstract class BaseStateMachine
     {
@@ -17,7 +17,7 @@ namespace Infrastructure.StateMachines
         {
             var state = await ChangeState<TState>();
 
-            Logger.Log($"Entering state {typeof(TState).Name}", LogTag);
+            Log.Trace($"Entering state {typeof(TState).Name}", LogTag);
 
             await state.Enter();
         }
@@ -26,7 +26,7 @@ namespace Infrastructure.StateMachines
         {
             var state = await ChangeState<TState>();
 
-            Logger.Log($"Entering state {typeof(TState).Name} with payload: \n{typeof(TPayload).Name}: {payload}", LogTag);
+            Log.Trace($"Entering state {typeof(TState).Name} with payload: \n{typeof(TPayload).Name}: {payload}", LogTag);
 
             await state.Enter(payload);
         }
@@ -35,7 +35,7 @@ namespace Infrastructure.StateMachines
         {
             var state = await ChangeState(index);
 
-            Logger.Log($"Entering state {state.GetType().Name}", LogTag);
+            Log.Trace($"Entering state {state.GetType().Name}", LogTag);
 
             if (state is IEnterableState enterableState) await enterableState.Enter();
         }

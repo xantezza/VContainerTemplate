@@ -1,4 +1,4 @@
-﻿namespace Configs.RemoteConfig
+﻿namespace VContainerTemplate.Configs.RemoteConfig
 {
     public static class RemoteConfigType
     {

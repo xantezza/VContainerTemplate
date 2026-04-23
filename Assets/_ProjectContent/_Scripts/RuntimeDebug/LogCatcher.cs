@@ -3,7 +3,7 @@ using System.Text;
 using IngameDebugConsole;
 using UnityEngine;
 
-namespace RuntimeDebug
+namespace VContainerTemplate.RuntimeDebug
 {
     public class LogCatcher : MonoBehaviour
     {
@@ -12,7 +12,7 @@ namespace RuntimeDebug
 
         private static List<(string, string, LogType)> _logs;
 
-        private void OnEnable()
+        private void Awake()
         {
             if (IsAwakened)
             {
@@ -29,7 +29,7 @@ namespace RuntimeDebug
             DebugLogManager.OnInit += InGameDebugWindowInitialize;
         }
 
-        private void OnDisable()
+        private void OnDestroy()
         {
             Application.logMessageReceived -= CacheLogOnMessageReceived;
             DebugLogManager.OnInit -= InGameDebugWindowInitialize;

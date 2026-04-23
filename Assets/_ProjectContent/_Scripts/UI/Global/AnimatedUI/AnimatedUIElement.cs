@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace UI.Global.AnimatedUI
+namespace VContainerTemplate.UI.Global.AnimatedUI
 {
     public class AnimatedUIElement : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerUpHandler
     {

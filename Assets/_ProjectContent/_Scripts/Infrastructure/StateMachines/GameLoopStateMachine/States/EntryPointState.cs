@@ -1,31 +1,30 @@
-﻿using Cysharp.Threading.Tasks;
-using Infrastructure.Factories;
-using Infrastructure.Factories.StateMachines.Initialization;
-using Infrastructure.Providers;
-using Infrastructure.Services.LoadingCurtain;
-using Zenject;
+﻿using System;
+using Cysharp.Threading.Tasks;
+using VContainer;
+using VContainerTemplate.Infrastructure.Services.LoadingCurtain;
+using VContainerTemplate.Infrastructure.StateMachines.InitializationStateMachine.Factory;
 
-namespace Infrastructure.StateMachines.GameLoopStateMachine.States
+namespace VContainerTemplate.Infrastructure.StateMachines.GameLoopStateMachine.States
 {
     public class EntryPointState : BaseGameLoopState, IEnterableState
     {
         private readonly IInitializationStateMachineFactory _initializationStateMachineFactory;
-        private readonly ILoadingCurtainService _loadingCurtainService;
+        private readonly ILoadingCurtainPresenter _loadingCurtainPresenter;
 
         [Inject]
         public EntryPointState(
             GameLoopStateMachine stateMachine, 
             IInitializationStateMachineFactory initializationStateMachineFactory, 
-            ILoadingCurtainService loadingCurtainService
+            ILoadingCurtainPresenter loadingCurtainPresenter
             ) : base(stateMachine)
         {
-            _loadingCurtainService = loadingCurtainService;
+            _loadingCurtainPresenter = loadingCurtainPresenter;
             _initializationStateMachineFactory = initializationStateMachineFactory;
         }
 
         public async UniTask Enter()
         {
-            _loadingCurtainService.ForceShow();
+            _loadingCurtainPresenter.ForceShow();
             await ToNextState();
         }
 

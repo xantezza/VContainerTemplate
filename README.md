@@ -1,42 +1,30 @@
-<span style="font-family:monospace;">
+## A Unity project template with ready-to-use functionality and a production-grade tech stack for a quick start.
+I have personally made many gamejam and production [games](https://xantezza.itch.io/) using this template.
 
-# Unity Project Template with ready-to-go functionality
-
-### I have personally implemented many GameJam [games](https://xantezza.itch.io/) using this template.
-
-### ```Architecture on Zenject, State Machines, UniRx, UniTasks```
-
+### ```Architecture based on SOLID principles and using Game Programming Patterns```
+***
+### ```Features```
 - Analytics, Remote Config
 - JSON/Binary Save Services
 - Audio, Settings, Tutorial, Window Services
 - Addressables Pooling
+### ```Plugins```
+- VContainer
+- UniTask
+- UniRx
+- DOTween
+- TriInspector
+- SerializedCollections
+### ```Debug Tools```
+- Graphy
+- IngameDebugConsole
 - Detailed Logging
 - Runtime Debugging Tools, Cheat Commands
 - Editor Windows, Menu Items, Build Helpers and utilities to improve QOL
- 
-### ```Plugins```
-- Zenject
-- UniTask
-- UniRx
-- LitMotion
-- TriInspector
-- Graphy
-- IngameDebugConsole
-- SerializedCollections
+- All Debug Tools are completely removed from ```Production``` builds.
 
 ***
-
- ### After cloning the repository and opening the project, you need to:
-
-- Route Unity Services and in `Settings => Services => Dashboard => Remote Config` add JSON Key-Value
-`infrastructure_config` with data
-```
-{
-  	"FakeMinimalLoadTime": 0.2,
-}
-```
 - Use `InfrastructureConfig.cs` as reference for new configs.
 - To easier configure them use  `Assets/_ProjectContent/Resources/ConfigUtility.asset`
 
-</span>
     

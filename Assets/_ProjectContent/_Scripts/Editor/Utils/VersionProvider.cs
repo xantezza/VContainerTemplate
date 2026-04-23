@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Editor.Utils
+namespace VContainerTemplateEditor.Editor.Utils
 {
     public class VersionProvider : ScriptableObject
     {

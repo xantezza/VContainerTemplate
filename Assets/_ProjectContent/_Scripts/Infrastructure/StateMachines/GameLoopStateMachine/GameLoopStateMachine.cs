@@ -1,13 +1,18 @@
 ﻿using System;
 using Cysharp.Threading.Tasks;
-using Infrastructure.Factories;
-using Infrastructure.Factories.StateMachines;
-using Infrastructure.Services.Log;
-using Infrastructure.StateMachines.GameLoopStateMachine.States;
-using Zenject;
+using VContainer;
+using VContainerTemplate.Infrastructure.Services.Log;
+using VContainerTemplate.Infrastructure.StateMachines.Factory;
+using VContainerTemplate.Infrastructure.StateMachines.GameLoopStateMachine.States;
 
-namespace Infrastructure.StateMachines.GameLoopStateMachine
+namespace VContainerTemplate.Infrastructure.StateMachines.GameLoopStateMachine
 {
+    public enum TargetGameLoopState
+    {
+        Menu = 2,
+        Gameplay = 3
+    }
+    
     public class GameLoopStateMachine : BaseStateMachine
     {
         protected override LogTag LogTag => LogTag.GameLoopStateMachine;
@@ -19,7 +24,7 @@ namespace Infrastructure.StateMachines.GameLoopStateMachine
             RegisterState(statesFactory.Create<MenuState>(this));
             RegisterState(statesFactory.Create<GameplayState>(this));
         }
-
+        
         public new async UniTask Enter<TState>() where TState : class, IState, IEnterableState
         {
             await base.Enter<TState>();
@@ -39,5 +44,6 @@ namespace Infrastructure.StateMachines.GameLoopStateMachine
                     throw new ArgumentOutOfRangeException(nameof(targetGameLoopState), targetGameLoopState, null);
             }
         }
+
     }
 }

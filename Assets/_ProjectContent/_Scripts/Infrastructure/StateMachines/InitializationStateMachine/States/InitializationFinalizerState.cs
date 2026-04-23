@@ -1,16 +1,16 @@
-﻿using System.Collections.Generic;
+﻿using System;
 using Cysharp.Threading.Tasks;
-using Infrastructure.Factories;
-using Infrastructure.Factories.StateMachines.GameLoop;
-using Infrastructure.Providers.AssetReferenceProvider;
-using Infrastructure.Services.Analytics;
-using Infrastructure.Services.SceneLoading;
-using Infrastructure.StateMachines.GameLoopStateMachine.States;
 using JetBrains.Annotations;
 using Tayx.Graphy.Utils.NumString;
 using UnityEngine;
+using VContainer;
+using VContainerTemplate.Infrastructure.Providers.AssetReferenceProvider;
+using VContainerTemplate.Infrastructure.Services.Analytics;
+using VContainerTemplate.Infrastructure.Services.SceneLoading;
+using VContainerTemplate.Infrastructure.StateMachines.GameLoopStateMachine.Factory;
+using VContainerTemplate.Infrastructure.StateMachines.GameLoopStateMachine.States;
 
-namespace Infrastructure.StateMachines.InitializationStateMachine.States
+namespace VContainerTemplate.Infrastructure.StateMachines.InitializationStateMachine.States
 {
     [UsedImplicitly]
     public class InitializationFinalizerState : BaseInitializationState, IEnterableState
@@ -20,7 +20,8 @@ namespace Infrastructure.StateMachines.InitializationStateMachine.States
         private readonly IAssetReferenceProvider _assetReferenceProvider;
         private readonly ISceneLoaderService _sceneLoaderService;
 
-        protected InitializationFinalizerState(
+        [Inject]
+        public InitializationFinalizerState(
             InitializationStateMachine stateMachine,
             ISceneLoaderService sceneLoaderService,
             IGameLoopStateMachineFactory gameLoopStateMachineFactory,

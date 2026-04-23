@@ -1,10 +1,10 @@
 ﻿using System;
-using Configs.RemoteConfig.Configs;
-using Infrastructure.Services.Log;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using VContainerTemplate.Configs.RemoteConfig.Configs;
+using VContainerTemplate.Infrastructure.Services.Log;
 
-namespace Configs.RemoteConfig
+namespace VContainerTemplate.Configs.RemoteConfig
 {
     public static class RemoteConfig
     {
@@ -54,13 +54,13 @@ namespace Configs.RemoteConfig
             {
                 try
                 {
-                    Logger.Error($"Failed to parse remote config \"{type}\", using cached default. Exception: {exception1}", LogTag.UnityServices);
+                    Log.Error($"Failed to parse remote config \"{type}\", using cached default. Exception: {exception1}", LogTag.UnityServices);
 
                     return InternalParse(_cachedDefaultConfig);
                 }
                 catch (Exception exception2)
                 {
-                    Logger.Error($"Failed to parse default config \"{type}\", using scripted default. Exception: {exception2}", LogTag.UnityServices);
+                    Log.Error($"Failed to parse default config \"{type}\", using scripted default. Exception: {exception2}", LogTag.UnityServices);
                     return new T();
                 }
             }
@@ -69,7 +69,7 @@ namespace Configs.RemoteConfig
             {
                 var configString = config[type].ToString();
 
-                Logger.Log($"Parsing config: \n{type}: \n{configString}", LogTag.UnityServices);
+                Log.Trace($"Parsing config: \n{type}: \n{configString}", LogTag.UnityServices);
 
                 return JsonConvert.DeserializeObject<T>(configString);
             }

@@ -1,7 +1,7 @@
 ﻿using TMPro;
 using UnityEngine;
 
-namespace UI.Menu
+namespace VContainerTemplate.UI.Menu
 {
     public class VersionDisplay : MonoBehaviour
     {

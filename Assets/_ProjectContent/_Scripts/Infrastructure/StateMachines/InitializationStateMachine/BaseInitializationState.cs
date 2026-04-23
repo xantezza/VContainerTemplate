@@ -1,18 +1,17 @@
 ﻿using Cysharp.Threading.Tasks;
-using Zenject;
+using VContainer;
 
-namespace Infrastructure.StateMachines.InitializationStateMachine
+namespace VContainerTemplate.Infrastructure.StateMachines.InitializationStateMachine
 {
     public class BaseInitializationState : IState
     {
-        protected readonly InitializationStateMachine _stateMachine;
+        protected InitializationStateMachine _stateMachine;
 
         [Inject]
         protected BaseInitializationState(InitializationStateMachine stateMachine)
         {
             _stateMachine = stateMachine;
         }
-
         public virtual UniTask Exit()
         {
             return default;
