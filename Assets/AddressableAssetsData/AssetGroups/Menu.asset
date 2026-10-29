@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Menu
+  m_EditorClassIdentifier: Unity.Addressables.Editor::UnityEditor.AddressableAssets.Settings.AddressableAssetGroup
+  m_GroupName: Menu
+  m_GUID: 02e61296b26d18948a068128263a13e2
+  m_SerializeEntries:
+  - m_GUID: 678df822d585bd94592593f6498c3fb2
+    m_Address: 1_Menu
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: d0501d0c0df8423429d46e9fd5da9572, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 0b5a78808806c2040bebebf787f90d66, type: 2}
+    - {fileID: 11400000, guid: 13253216b7922654baf6cfe1cbdaa63c, type: 2}
+    - {fileID: 11400000, guid: 1a3475b1deb20ec4289b3c023348428b, type: 2}

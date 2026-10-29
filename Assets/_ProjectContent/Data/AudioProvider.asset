@@ -11,12 +11,22 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4851e685a5254814b7855dd4806e7ad2, type: 3}
   m_Name: AudioProvider
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: VContainerTemplate::VContainerTemplate.Infrastructure.Audio.AudioProvider
   <SFXGroup>k__BackingField: {fileID: 24300002, guid: 935d6d3afc1dbf849b6ce35f13ea63f1, type: 2}
   <MusicGroup>k__BackingField: {fileID: 24300002, guid: 30a3733d135e27f47a150b66835d0f9e, type: 2}
   _SFXClips:
     _serializedList:
     - Key: 1
-      Value: {fileID: 8300000, guid: 52fa8aafea2ce654088455379be38687, type: 3}
+      Value:
+        audioClip:
+          m_AssetGUID: 52fa8aafea2ce654088455379be38687
+          m_SubObjectName: 
+          m_SubObjectType: 
+          m_SubObjectGUID: 
+          m_EditorAssetChanged: 0
+        volume01: 1
+        randomPitch: 0
+        pitchFrom: 0
+        pitchTo: 0
   _musicClips:
     _serializedList: []

@@ -21,7 +21,7 @@ MonoBehaviour:
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: d829dcfc225f56440a2b10d9ac318aea
-    m_Address: Assets/Plugins/IngameDebugConsole/Sprites/IngameDebugConsoleSpriteAtlas.spriteatlas
+    m_Address: IngameDebugConsoleSpriteAtlas
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

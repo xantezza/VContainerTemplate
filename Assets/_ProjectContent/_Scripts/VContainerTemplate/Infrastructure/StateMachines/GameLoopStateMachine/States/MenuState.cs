@@ -1,0 +1,29 @@
+using Cysharp.Threading.Tasks;
+using VContainer;
+using VContainerTemplate.Infrastructure.AssetReferenceProvider;
+using VContainerTemplate.Infrastructure.SceneLoading;
+
+namespace VContainerTemplate.Infrastructure.StateMachines.GameLoop.States
+{
+    public class MenuState : BaseGameLoopState, IEnterableState
+    {
+        private readonly ISceneLoaderService _sceneLoaderService;
+        private readonly IAssetReferenceProvider _assetReferenceProvider;
+
+        [Inject]
+        public MenuState(
+            GameLoopStateMachine stateMachine,
+            ISceneLoaderService sceneLoaderService,
+            IAssetReferenceProvider assetReferenceProvider
+            ) : base(stateMachine)
+        {
+            _assetReferenceProvider = assetReferenceProvider;
+            _sceneLoaderService = sceneLoaderService;
+        }
+
+        public async UniTask Enter()
+        {
+            await _sceneLoaderService.LoadScene(_assetReferenceProvider.MenuScene, true);
+        }
+    }
+}

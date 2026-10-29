@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Modals
+  m_EditorClassIdentifier: Unity.Addressables.Editor::UnityEditor.AddressableAssets.Settings.AddressableAssetGroup
+  m_GroupName: Modals
+  m_GUID: a3bc333e67366b847be80a7bbc487ca7
+  m_SerializeEntries:
+  - m_GUID: 3d36ec070ccbcee429f54f449dc8097d
+    m_Address: ErrorModal
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e229f3a10bd36bf489298a1fda6da293
+    m_Address: PrivacyPolicyModal
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: d0501d0c0df8423429d46e9fd5da9572, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 6086012a831a52c49b103e7069debe51, type: 2}
+    - {fileID: 11400000, guid: 2030be28f42d6cb44931bae87236ffd6, type: 2}
+    - {fileID: 11400000, guid: 5a05c0aa1ef932e47ba3e36995e7a6b7, type: 2}

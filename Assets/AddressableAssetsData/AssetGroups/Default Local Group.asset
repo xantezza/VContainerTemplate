@@ -14,62 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_GroupName: Default Local Group
   m_GUID: 307319cb96fb4f049b02c03679b273d2
-  m_SerializeEntries:
-  - m_GUID: 0ebfda809d82b4714b7eea9e1da20bb1
-    m_Address: Assets/_ProjectContent/Textures/GlobalUI/Circle Frame.png
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 18d3fc88e8cdd4011a1e28114222ec5f
-    m_Address: Assets/_ProjectContent/Textures/GlobalUI/Square.png
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 3d36ec070ccbcee429f54f449dc8097d
-    m_Address: ErrorModal
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 56852816c519247b1a5dbf916ce38278
-    m_Address: Assets/_ProjectContent/Textures/GlobalUI/Circle Frame - Thin.png
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 678df822d585bd94592593f6498c3fb2
-    m_Address: Assets/_ProjectContent/Scenes/1_Menu.unity
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 75c1c63df0cdf4d83a19cd013e6904d8
-    m_Address: Assets/_ProjectContent/Textures/GlobalUI/Circle.png
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 7ca7cff540264064cb8765e54c959334
-    m_Address: Assets/_ProjectContent/Scenes/2_Gameplay.unity
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 95841526fd68f42909aab03a1cbfec9c
-    m_Address: Assets/_ProjectContent/Textures/GlobalUI/Checkmark.png
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 9ea50068bf59b1d43b86ab9539e0bc05
-    m_Address: Assets/_ProjectContent/Textures/GlobalUI.spriteatlasv2
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: d6b198d983e9b41f5ad1ad6ed85b4797
-    m_Address: Assets/_ProjectContent/Textures/GlobalUI/Frame.png
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: e229f3a10bd36bf489298a1fda6da293
-    m_Address: PrivacyPolicyModal
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
+  m_SerializeEntries: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: d0501d0c0df8423429d46e9fd5da9572, type: 2}
   m_SchemaSet:

@@ -24,7 +24,7 @@ I have personally made many gamejam and production [games](https://xantezza.itch
 - All Debug Tools are completely removed from ```Production``` builds.
 
 ***
-- Use `InfrastructureConfig.cs` as reference for new configs.
-- To easier configure them use  `Assets/_ProjectContent/Resources/ConfigUtility.asset`
+- Use `MainConfig.cs` as reference for new remote configs.
+- To easier configure remote configs use  `Assets/_ProjectContent/Resources/ConfigUtility.asset` or https://jsonformatter.org/json-viewer
 
     
