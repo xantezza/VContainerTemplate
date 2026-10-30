@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-fullscreen">
+    <title>{{{ PRODUCT_NAME }}}</title>
+    <link rel="stylesheet" href="TemplateData/style.css">
+</head>
+<body>
+<div id="unity-container" class="unity-desktop">
+    <button id="unity-fullscreen-button" onclick="toggleFullscreen()"></button>
+    <canvas id="unity-canvas"></canvas>
+    <div id="unity-loading-bar">
+        <div id="unity-progress-bar-empty">
+            <div id="unity-progress-bar-full"></div>
+            <p id="progressPercent" style="top: 30px;color: white;position: relative;text-align: center;font-family: 'Sofia Sans', sans-serif; font-weight: 700; font-style: italic;font-size: 20px;">0%</p>
+        </div>
+    </div>
+    <div id="unity-warning"> </div>
+</div>
+<script>
+    var container = document.querySelector("#unity-container");
+    var canvas = document.querySelector("#unity-canvas");
+    var loadingBar = document.querySelector("#unity-loading-bar");
+    var progressBarFull = document.querySelector("#unity-progress-bar-full");
+    var fullscreenButton = document.querySelector("#unity-fullscreen-button");
+    var warningBanner = document.querySelector("#unity-warning");
+
+    // ---- ИСПРАВЛЕННЫЕ ПУТИ ----
+    var buildName = "{{{ BUILD_NAME }}}".trim();
+    // Если BUILD_NAME пустой или равен "Build" – не добавляем лишнюю вложенность
+    var basePath = (buildName === "" || buildName === "Build") ? "" : buildName + "/";
+    var buildUrl = basePath + "Build";
+    var streamingAssetsUrl = basePath + "StreamingAssets";
+
+    function isFullscreen() {
+        return !!(document.fullscreenElement || document.webkitFullscreenElement || document.msFullscreenElement);
+    }
+
+    function rebuildFullscreenGUI() {
+        var btn = document.getElementById("unity-fullscreen-button");
+        if (isFullscreen()) {
+            btn.style.backgroundImage = "url('TemplateData/fullscreen-button-in.png')";
+        } else {
+            btn.style.backgroundImage = "url('TemplateData/fullscreen-button-out.png')";
+        }
+    }
+
+    function unityShowBanner(msg, type) {
+        function updateBannerVisibility() {
+            warningBanner.style.display = warningBanner.children.length ? 'block' : 'none';
+        }
+        var div = document.createElement('div');
+        div.innerHTML = msg;
+        warningBanner.appendChild(div);
+        if (type == 'error') div.style = 'background: red; padding: 10px;';
+        else if (type == 'warning') div.style = 'background: yellow; padding: 10px;';
+        setTimeout(function() {
+            if (warningBanner.contains(div)) {
+                warningBanner.removeChild(div);
+                updateBannerVisibility();
+            }
+        }, 5000);
+        updateBannerVisibility();
+    }
+
+    function toggleFullscreen() {
+        if (isFullscreen()) {
+            (document.exitFullscreen || document.webkitExitFullscreen || document.msExitFullscreen).call(document);
+        } else {
+            var element = document.getElementById("unity-container");
+            (element.requestFullscreen || element.webkitRequestFullscreen || element.msRequestFullscreen).call(element);
+        }
+    }
+
+    // ---- АДАПТИВНЫЙ РАЗМЕР С FALLBACK ----
+    function resizeUnity() {
+        var width = window.visualViewport ? window.visualViewport.width : window.innerWidth;
+        var height = window.visualViewport ? window.visualViewport.height : window.innerHeight;
+        container.style.width = width + "px";
+        container.style.height = height + "px";
+        canvas.style.width = width + "px";
+        canvas.style.height = height + "px";
+        window.scrollTo(0, -100);
+    }
+
+    // Мобильные устройства
+    if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+        var meta = document.createElement('meta');
+        meta.name = 'viewport';
+        meta.content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover';
+        document.getElementsByTagName('head')[0].appendChild(meta);
+        container.className = "unity-mobile";
+        // Для производительности на мобильных:
+        // config.devicePixelRatio = 1;
+    }
+
+    // Скрываем fullscreen на iOS
+    if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+        fullscreenButton.style.display = "none";
+    }
+
+    // ---- КОНФИГУРАЦИЯ UNITY ----
+    var loaderUrl = buildUrl + "/{{{ LOADER_FILENAME }}}";
+    var config = {
+        // Упрощённый cacheControl – без must-revalidate (лучше работает на itch.io)
+        cacheControl: function (url) {
+            if (url.match(/\.(data|bundle|wasm|mp4|custom)$/)) {
+                return "immutable";
+            }
+            return "no-store";
+        },
+        dataUrl: buildUrl + "/{{{ DATA_FILENAME }}}",
+        frameworkUrl: buildUrl + "/{{{ FRAMEWORK_FILENAME }}}",
+        #if USE_WASM
+        codeUrl: buildUrl + "/{{{ CODE_FILENAME }}}",
+        #endif
+        #if MEMORY_FILENAME
+        memoryUrl: buildUrl + "/{{{ MEMORY_FILENAME }}}",
+        #endif
+        #if SYMBOLS_FILENAME
+        symbolsUrl: buildUrl + "/{{{ SYMBOLS_FILENAME }}}",
+        #endif
+        streamingAssetsUrl: streamingAssetsUrl,
+        companyName: {{{ JSON.stringify(COMPANY_NAME) }}},
+    productName: {{{ JSON.stringify(PRODUCT_NAME) }}},
+    productVersion: {{{ JSON.stringify(PRODUCT_VERSION) }}},
+    showBanner: unityShowBanner, 
+    autoSyncPersistentDataPath: true
+    };
+
+    // Запуск загрузки
+    container.style.display = "none";
+    var script = document.createElement("script");
+    script.src = loaderUrl;
+    script.onload = function() {
+        createUnityInstance(canvas, config, function(progress) {
+            progressBarFull.style.width = (90 * progress) + "%";
+        }).then(function(unityInstance) {
+            container.style.display = "block";
+        }).catch(function(message) {
+            console.error(message);
+            unityShowBanner("Ошибка загрузки: " + message, "error");
+        });
+    };
+    script.onerror = function() {
+        unityShowBanner("Не удалось загрузить скрипт сборки: " + loaderUrl, "error");
+    };
+    document.body.appendChild(script); // Только один раз!
+
+    // Финальная анимация загрузки
+    function finalizeLoading() {
+        progressBarFull.style.width = "100%";
+        setTimeout(function() {
+            loadingBar.style.display = "none";
+        }, 500);
+    }
+
+    window.addEventListener('UnityMenuLoaded', finalizeLoading);
+    window.addEventListener('UnityGameloopLoaded', finalizeLoading);
+    document.onfullscreenchange = rebuildFullscreenGUI;
+    window.addEventListener('load', resizeUnity);
+    window.addEventListener('resize', resizeUnity);
+    window.addEventListener('orientationchange', resizeUnity);
+    resizeUnity();
+</script>
+</body>
+</html>

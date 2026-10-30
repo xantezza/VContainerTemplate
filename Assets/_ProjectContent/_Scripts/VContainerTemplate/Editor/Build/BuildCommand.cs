@@ -94,14 +94,14 @@ namespace VContainerTemplateEditor.Build
             versionProvider.Minor++;
             EditorUtility.SetDirty(versionProvider);
             AssetDatabase.SaveAssets();
-            var buildType = isDev ? "DEV" : "Production";
-            var versionWithDate = $"{buildType}_{versionProvider.Major}.{versionProvider.Minor}_{DateTime.Now:dd.MM.yy}";
-            PlayerSettings.bundleVersion = versionWithDate;
+            var buildType = isDev ? "DEV_" : "";
+            var versionWithDate = $"{buildType}{versionProvider.Major}.{versionProvider.Minor}_{DateTime.Now:dd.MM.yy}";
+            PlayerSettings.bundleVersion =  $"{buildType}{versionProvider.Major}.{versionProvider.Minor}";
             Debug.Log("Version: " + versionWithDate);
             
             var projectName = Path.GetFileName(Application.productName);
 
-            var platformFolderPath = Path.Combine(@"D:\UnityBuilds", platformFolderName);
+            var platformFolderPath = Path.Combine(@"Z:\UnityBuilds", platformFolderName);
             if (!Directory.Exists(platformFolderPath))
                 Directory.CreateDirectory(platformFolderPath);
 
@@ -117,7 +117,7 @@ namespace VContainerTemplateEditor.Build
             {
                 case BuildTarget.WebGL:
                     UserBuildSettings.codeOptimization =  isDev ? WasmCodeOptimization.BuildTimes : WasmCodeOptimization.DiskSize;
-                    PlayerSettings.WebGL.compressionFormat =  isDev ? WebGLCompressionFormat.Disabled : WebGLCompressionFormat.Brotli;
+                    PlayerSettings.WebGL.compressionFormat = WebGLCompressionFormat.Brotli;
                     PlayerSettings.WebGL.exceptionSupport = isDev ? WebGLExceptionSupport.FullWithStacktrace : WebGLExceptionSupport.ExplicitlyThrownExceptionsOnly;
                     buildPath = buildFolderPath;
                     break;

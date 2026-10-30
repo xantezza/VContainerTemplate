@@ -33,6 +33,7 @@ namespace VContainerTemplate.Infrastructure.StateMachines.Initialization.States
 
 #if PLATFORM_WEBGL && !UNITY_EDITOR
             InitializeUnityServices().Forget();
+            await _stateMachine.NextState();
 #else
             InitializeUnityServices().Forget();
             await _stateMachine.NextState();
